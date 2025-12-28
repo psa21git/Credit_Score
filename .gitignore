@@ -1,3 +1,5 @@
 models/
 
+*.zip
+
 .ipynb_checkpoints/

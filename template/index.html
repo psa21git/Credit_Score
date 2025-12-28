@@ -26,7 +26,18 @@
 
         <div class="row">
             <input type="number" id="Num_of_Loan" placeholder="Number of Loans">
-            <input type="text" id="Type_of_Loan" placeholder="Type of Loan">
+
+            <!-- Type of Loan -->
+            <select id="Type_of_Loan">
+                <option value="">Type of Loan</option>
+                <option value="Personal Loan">Personal Loan</option>
+                <option value="Auto Loan">Auto Loan</option>
+                <option value="Home Loan">Home Loan</option>
+                <option value="Student Loan">Student Loan</option>
+                <option value="Credit-Builder Loan">Credit-Builder Loan</option>
+                <option value="Payday Loan">Payday Loan</option>
+            </select>
+
             <input type="number" id="Delay_from_due_date" placeholder="Delay from Due Date">
         </div>
 
@@ -37,34 +48,76 @@
         </div>
 
         <div class="row">
-            <input type="text" id="Credit_Mix" placeholder="Credit Mix">
+            <!-- Credit Mix -->
+            <select id="Credit_Mix">
+                <option value="">Credit Mix</option>
+                <option value="Bad">Bad</option>
+                <option value="Standard">Standard</option>
+                <option value="Good">Good</option>
+            </select>
+
             <input type="number" step="0.01" id="Outstanding_Debt" placeholder="Outstanding Debt">
             <input type="number" step="0.01" id="Credit_Utilization_Ratio" placeholder="Credit Utilization Ratio">
         </div>
 
         <div class="row">
             <input type="number" id="Credit_History_Age" placeholder="Credit History Age (Months)">
-            <input type="text" id="Payment_of_Min_Amount" placeholder="Payment of Min Amount">
+
+            <!-- Payment of Minimum Amount -->
+            <select id="Payment_of_Min_Amount">
+                <option value="">Payment of Min Amount</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
             <input type="number" step="0.01" id="Total_EMI_per_month" placeholder="Total EMI per Month">
         </div>
 
         <div class="row">
             <input type="number" step="0.01" id="Amount_invested_monthly" placeholder="Amount Invested Monthly">
-            <input type="text" id="Payment_Behaviour" placeholder="Payment Behaviour">
+
+            <!-- Payment Behaviour -->
+            <select id="Payment_Behaviour">
+                <option value="">Payment Behaviour</option>
+                <option value="Low_spent_Small_value_payments">Low spent, Small payments</option>
+                <option value="Low_spent_Medium_value_payments">Low spent, Medium payments</option>
+                <option value="Low_spent_Large_value_payments">Low spent, Large payments</option>
+                <option value="High_spent_Small_value_payments">High spent, Small payments</option>
+                <option value="High_spent_Medium_value_payments">High spent, Medium payments</option>
+                <option value="High_spent_Large_value_payments">High spent, Large payments</option>
+            </select>
+
             <input type="number" step="0.01" id="Monthly_Balance" placeholder="Monthly Balance">
         </div>
 
         <div class="row">
-            <input type="text" id="Occupation" placeholder="Occupation">
+            <!-- Occupation -->
+            <select id="Occupation">
+                <option value="">Occupation</option>
+                <option value="Scientist">Scientist</option>
+                <option value="Engineer">Engineer</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Manager">Manager</option>
+                <option value="Entrepreneur">Entrepreneur</option>
+                <option value="Lawyer">Lawyer</option>
+                <option value="Journalist">Journalist</option>
+                <option value="Accountant">Accountant</option>
+                <option value="Developer">Developer</option>
+                <option value="Media_Manager">Media Manager</option>
+                <option value="Writer">Writer</option>
+            </select>
+
             <input type="text" id="Month" placeholder="Month (e.g. September or 9)">
         </div>
 
         <button type="button" onclick="predict()">Predict Credit Score</button>
 
     </form>
-        
+
     <div id="result"></div>
 </div>
+
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
