@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credit Score Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+
+    <h2>Credit Score Prediction</h2>
+
+    <form id="creditForm">
+
+        <div class="row">
+            <input type="number" id="Age" placeholder="Age">
+            <input type="number" id="Annual_Income" placeholder="Annual Income">
+            <input type="number" id="Monthly_Inhand_Salary" placeholder="Monthly Inhand Salary">
+        </div>
+
+        <div class="row">
+            <input type="number" id="Num_Bank_Accounts" placeholder="Number of Bank Accounts">
+            <input type="number" id="Num_Credit_Card" placeholder="Number of Credit Cards">
+            <input type="number" id="Interest_Rate" placeholder="Interest Rate">
+        </div>
+
+        <div class="row">
+            <input type="number" id="Num_of_Loan" placeholder="Number of Loans">
+            <input type="text" id="Type_of_Loan" placeholder="Type of Loan">
+            <input type="number" id="Delay_from_due_date" placeholder="Delay from Due Date">
+        </div>
+
+        <div class="row">
+            <input type="number" id="Num_of_Delayed_Payment" placeholder="Delayed Payments">
+            <input type="number" id="Changed_Credit_Limit" placeholder="Changed Credit Limit">
+            <input type="number" id="Num_Credit_Inquiries" placeholder="Credit Inquiries">
+        </div>
+
+        <div class="row">
+            <input type="text" id="Credit_Mix" placeholder="Credit Mix">
+            <input type="number" step="0.01" id="Outstanding_Debt" placeholder="Outstanding Debt">
+            <input type="number" step="0.01" id="Credit_Utilization_Ratio" placeholder="Credit Utilization Ratio">
+        </div>
+
+        <div class="row">
+            <input type="number" id="Credit_History_Age" placeholder="Credit History Age (Months)">
+            <input type="text" id="Payment_of_Min_Amount" placeholder="Payment of Min Amount">
+            <input type="number" step="0.01" id="Total_EMI_per_month" placeholder="Total EMI per Month">
+        </div>
+
+        <div class="row">
+            <input type="number" step="0.01" id="Amount_invested_monthly" placeholder="Amount Invested Monthly">
+            <input type="text" id="Payment_Behaviour" placeholder="Payment Behaviour">
+            <input type="number" step="0.01" id="Monthly_Balance" placeholder="Monthly Balance">
+        </div>
+
+        <div class="row">
+            <input type="text" id="Occupation" placeholder="Occupation">
+            <input type="text" id="Month" placeholder="Month (e.g. September or 9)">
+        </div>
+
+        <button type="button" onclick="predict()">Predict Credit Score</button>
+
+    </form>
+        
+    <div id="result"></div>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
