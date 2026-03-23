@@ -5,11 +5,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from src.preprocess import preprocess_input
-
+def load_data():
+    return pd.read_csv("data/train.csv")
 def train_and_save():
     os.makedirs("models", exist_ok=True)
 
-    df = pd.read_csv("data/train.csv")
+    df = load_data()
 
     X = df.drop("Credit_Score", axis=1)
     y = df["Credit_Score"]
