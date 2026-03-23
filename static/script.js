@@ -32,12 +32,37 @@ function predict() {
     })
     .then(res => res.json())
     .then(data => {
-        document.getElementById("result").innerText =
-            "Credit Status: " + data.credit_status +
-            " | Default Risk: " + data.default_probability;
+        const resultBox = document.getElementById("result");
+        resultBox.classList.remove("hidden", "success", "warn", "danger");
+        
+        let statusClass = "success";
+        let icon = "fa-circle-check";
+        
+        const status = (data.credit_status || "").toString().toLowerCase();
+        if (status.includes("poor") || status.includes("bad")) {
+            statusClass = "danger";
+            icon = "fa-circle-xmark";
+        } else if (status.includes("standard") || status.includes("fair")) {
+            statusClass = "warn";
+            icon = "fa-triangle-exclamation";
+        }
+
+        resultBox.classList.add(statusClass);
+        resultBox.innerHTML = `
+            <div style="font-size: 1.5rem; margin-bottom: 10px;">
+                <i class="fa-solid ${icon}"></i> 
+                Credit Status: <strong>${data.credit_status}</strong>
+            </div>
+            <div style="font-size: 0.95rem; font-weight: 500; opacity: 0.8;">
+                Estimated Default Risk: ${data.default_probability}
+            </div>
+        `;
     })
     .catch(err => {
-        document.getElementById("result").innerText = "Error occurred!";
+        const resultBox = document.getElementById("result");
+        resultBox.classList.remove("hidden", "success", "warn");
+        resultBox.classList.add("danger");
+        resultBox.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> An error occurred while predicting. Please try again.`;
         console.error(err);
     });
 }

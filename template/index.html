@@ -2,122 +2,226 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Credit Score Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Score AI Predictor</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<div class="container">
 
-    <h2>Credit Score Prediction</h2>
+    <!-- Background decorative elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
 
-    <form id="creditForm">
+    <div class="container">
+        
+        <header class="app-header">
+            <div class="logo-container">
+                <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <h1>AI Credit Score Predictor</h1>
+            <p>Discover your financial standing with our advanced machine learning model.</p>
+        </header>
 
-        <div class="row">
-            <input type="number" id="Age" placeholder="Age">
-            <input type="number" id="Annual_Income" placeholder="Annual Income">
-            <input type="number" id="Monthly_Inhand_Salary" placeholder="Monthly Inhand Salary">
-        </div>
+        <form id="creditForm" class="glass-panel">
+            
+            <!-- Section 1: Personal Profile -->
+            <div class="form-section">
+                <h3 class="section-title"><i class="fa-solid fa-user-circle"></i> Personal Profile</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="Age">Age</label>
+                        <input type="number" id="Age" placeholder="e.g. 28">
+                    </div>
+                    <div class="input-group">
+                        <label for="Occupation">Occupation</label>
+                        <select id="Occupation">
+                            <option value="">Select Occupation</option>
+                            <option value="Scientist">Scientist</option>
+                            <option value="Engineer">Engineer</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Entrepreneur">Entrepreneur</option>
+                            <option value="Lawyer">Lawyer</option>
+                            <option value="Journalist">Journalist</option>
+                            <option value="Accountant">Accountant</option>
+                            <option value="Developer">Developer</option>
+                            <option value="Media_Manager">Media Manager</option>
+                            <option value="Writer">Writer</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="Month">Month of Evaluation</label>
+                        <input type="text" id="Month" placeholder="e.g. September or 9">
+                    </div>
+                </div>
+            </div>
 
-        <div class="row">
-            <input type="number" id="Num_Bank_Accounts" placeholder="Number of Bank Accounts">
-            <input type="number" id="Num_Credit_Card" placeholder="Number of Credit Cards">
-            <input type="number" id="Interest_Rate" placeholder="Interest Rate">
-        </div>
+            <!-- Section 2: Financial Overview -->
+            <div class="form-section">
+                <h3 class="section-title"><i class="fa-solid fa-wallet"></i> Financial Overview</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="Annual_Income">Annual Income ($)</label>
+                        <input type="number" step="0.01" id="Annual_Income" placeholder="e.g. 85000">
+                    </div>
+                    <div class="input-group">
+                        <label for="Monthly_Inhand_Salary">Monthly Inhand Salary ($)</label>
+                        <input type="number" step="0.01" id="Monthly_Inhand_Salary" placeholder="e.g. 5200">
+                    </div>
+                    <div class="input-group">
+                        <label for="Monthly_Balance">Monthly Balance ($)</label>
+                        <input type="number" step="0.01" id="Monthly_Balance" placeholder="e.g. 1500">
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="Amount_invested_monthly">Monthly Investment ($)</label>
+                        <input type="number" step="0.01" id="Amount_invested_monthly" placeholder="e.g. 500">
+                    </div>
+                    <div class="input-group">
+                        <label for="Total_EMI_per_month">Total EMI per Month ($)</label>
+                        <input type="number" step="0.01" id="Total_EMI_per_month" placeholder="e.g. 800">
+                    </div>
+                    <div class="input-group">
+                        <!-- Spacer for grid alignment if needed -->
+                    </div>
+                </div>
+            </div>
 
-        <div class="row">
-            <input type="number" id="Num_of_Loan" placeholder="Number of Loans">
+            <!-- Section 3: Credit Accounts -->
+            <div class="form-section">
+                <h3 class="section-title"><i class="fa-solid fa-credit-card"></i> Credit Accounts & History</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="Num_Bank_Accounts">Bank Accounts</label>
+                        <input type="number" id="Num_Bank_Accounts" placeholder="e.g. 2">
+                    </div>
+                    <div class="input-group">
+                        <label for="Num_Credit_Card">Credit Cards</label>
+                        <input type="number" id="Num_Credit_Card" placeholder="e.g. 3">
+                    </div>
+                    <div class="input-group">
+                        <label for="Interest_Rate">Interest Rate (%)</label>
+                        <input type="number" step="0.01" id="Interest_Rate" placeholder="e.g. 15.5">
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="Credit_History_Age">Credit History Age (Months)</label>
+                        <input type="number" id="Credit_History_Age" placeholder="e.g. 120">
+                    </div>
+                    <div class="input-group">
+                        <label for="Credit_Mix">Credit Mix</label>
+                        <select id="Credit_Mix">
+                            <option value="">Select Mix</option>
+                            <option value="Bad">Bad</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Good">Good</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="Credit_Utilization_Ratio">Utilization Ratio (%)</label>
+                        <input type="number" step="0.01" id="Credit_Utilization_Ratio" placeholder="e.g. 30.5">
+                    </div>
+                </div>
+            </div>
 
-            <!-- Type of Loan -->
-            <select id="Type_of_Loan">
-                <option value="">Type of Loan</option>
-                <option value="Personal Loan">Personal Loan</option>
-                <option value="Auto Loan">Auto Loan</option>
-                <option value="Home Loan">Home Loan</option>
-                <option value="Student Loan">Student Loan</option>
-                <option value="Credit-Builder Loan">Credit-Builder Loan</option>
-                <option value="Payday Loan">Payday Loan</option>
-            </select>
+            <!-- Section 4: Loans, Debt & Liabilities -->
+            <div class="form-section">
+                <h3 class="section-title"><i class="fa-solid fa-house-chimney-crack"></i> Loans, Debt & Liabilities</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="Num_of_Loan">Number of Loans</label>
+                        <input type="number" id="Num_of_Loan" placeholder="e.g. 1">
+                    </div>
+                    <div class="input-group">
+                        <label for="Type_of_Loan">Primary Loan Type</label>
+                        <select id="Type_of_Loan">
+                            <option value="">Select Type</option>
+                            <option value="Personal Loan">Personal Loan</option>
+                            <option value="Auto Loan">Auto Loan</option>
+                            <option value="Home Loan">Home Loan</option>
+                            <option value="Student Loan">Student Loan</option>
+                            <option value="Credit-Builder Loan">Credit-Builder Loan</option>
+                            <option value="Payday Loan">Payday Loan</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="Outstanding_Debt">Outstanding Debt ($)</label>
+                        <input type="number" step="0.01" id="Outstanding_Debt" placeholder="e.g. 5000">
+                    </div>
+                </div>
+            </div>
 
-            <input type="number" id="Delay_from_due_date" placeholder="Delay from Due Date">
-        </div>
+            <!-- Section 5: Payment Behavior -->
+            <div class="form-section">
+                <h3 class="section-title"><i class="fa-solid fa-receipt"></i> Payment Behavior & Inquiries</h3>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="Delay_from_due_date">Delay from Due Date (Days)</label>
+                        <input type="number" id="Delay_from_due_date" placeholder="e.g. 3">
+                    </div>
+                    <div class="input-group">
+                        <label for="Num_of_Delayed_Payment">Delayed Payments Total</label>
+                        <input type="number" id="Num_of_Delayed_Payment" placeholder="e.g. 5">
+                    </div>
+                    <div class="input-group">
+                        <label for="Payment_of_Min_Amount">Paid Minimum Amount?</label>
+                        <select id="Payment_of_Min_Amount">
+                            <option value="">Select Option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="Payment_Behaviour">General Payment Behavior</label>
+                        <select id="Payment_Behaviour">
+                            <option value="">Select Behavior</option>
+                            <option value="Low_spent_Small_value_payments">Low spent, Small payments</option>
+                            <option value="Low_spent_Medium_value_payments">Low spent, Medium payments</option>
+                            <option value="Low_spent_Large_value_payments">Low spent, Large payments</option>
+                            <option value="High_spent_Small_value_payments">High spent, Small payments</option>
+                            <option value="High_spent_Medium_value_payments">High spent, Medium payments</option>
+                            <option value="High_spent_Large_value_payments">High spent, Large payments</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="Changed_Credit_Limit">Changed Credit Limit</label>
+                        <input type="number" step="0.01" id="Changed_Credit_Limit" placeholder="e.g. 11.5">
+                    </div>
+                    <div class="input-group">
+                        <label for="Num_Credit_Inquiries">Credit Inquiries</label>
+                        <input type="number" id="Num_Credit_Inquiries" placeholder="e.g. 2">
+                    </div>
+                </div>
+            </div>
 
-        <div class="row">
-            <input type="number" id="Num_of_Delayed_Payment" placeholder="Delayed Payments">
-            <input type="number" id="Changed_Credit_Limit" placeholder="Changed Credit Limit">
-            <input type="number" id="Num_Credit_Inquiries" placeholder="Credit Inquiries">
-        </div>
+            <div class="action-container">
+                <button type="button" class="btn-predict" onclick="predict()">
+                    <span>Predict My Credit Score</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
 
-        <div class="row">
-            <!-- Credit Mix -->
-            <select id="Credit_Mix">
-                <option value="">Credit Mix</option>
-                <option value="Bad">Bad</option>
-                <option value="Standard">Standard</option>
-                <option value="Good">Good</option>
-            </select>
+            <div id="result" class="result-box hidden">
+                <!-- Result will be populated here -->
+            </div>
 
-            <input type="number" step="0.01" id="Outstanding_Debt" placeholder="Outstanding Debt">
-            <input type="number" step="0.01" id="Credit_Utilization_Ratio" placeholder="Credit Utilization Ratio">
-        </div>
+        </form>
 
-        <div class="row">
-            <input type="number" id="Credit_History_Age" placeholder="Credit History Age (Months)">
+    </div>
 
-            <!-- Payment of Minimum Amount -->
-            <select id="Payment_of_Min_Amount">
-                <option value="">Payment of Min Amount</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-
-            <input type="number" step="0.01" id="Total_EMI_per_month" placeholder="Total EMI per Month">
-        </div>
-
-        <div class="row">
-            <input type="number" step="0.01" id="Amount_invested_monthly" placeholder="Amount Invested Monthly">
-
-            <!-- Payment Behaviour -->
-            <select id="Payment_Behaviour">
-                <option value="">Payment Behaviour</option>
-                <option value="Low_spent_Small_value_payments">Low spent, Small payments</option>
-                <option value="Low_spent_Medium_value_payments">Low spent, Medium payments</option>
-                <option value="Low_spent_Large_value_payments">Low spent, Large payments</option>
-                <option value="High_spent_Small_value_payments">High spent, Small payments</option>
-                <option value="High_spent_Medium_value_payments">High spent, Medium payments</option>
-                <option value="High_spent_Large_value_payments">High spent, Large payments</option>
-            </select>
-
-            <input type="number" step="0.01" id="Monthly_Balance" placeholder="Monthly Balance">
-        </div>
-
-        <div class="row">
-            <!-- Occupation -->
-            <select id="Occupation">
-                <option value="">Occupation</option>
-                <option value="Scientist">Scientist</option>
-                <option value="Engineer">Engineer</option>
-                <option value="Teacher">Teacher</option>
-                <option value="Doctor">Doctor</option>
-                <option value="Manager">Manager</option>
-                <option value="Entrepreneur">Entrepreneur</option>
-                <option value="Lawyer">Lawyer</option>
-                <option value="Journalist">Journalist</option>
-                <option value="Accountant">Accountant</option>
-                <option value="Developer">Developer</option>
-                <option value="Media_Manager">Media Manager</option>
-                <option value="Writer">Writer</option>
-            </select>
-
-            <input type="text" id="Month" placeholder="Month (e.g. September or 9)">
-        </div>
-
-        <button type="button" onclick="predict()">Predict Credit Score</button>
-
-    </form>
-
-    <div id="result"></div>
-</div>
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
