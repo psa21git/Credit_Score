@@ -22,7 +22,10 @@ def train_and_save():
     X_scaled = scaler.fit_transform(X)
 
     model = RandomForestClassifier(
-        n_estimators=100,
+        n_estimators=50,
+        max_depth=15,
+        min_samples_leaf=10,
+        n_jobs=-1,
         random_state=42
     )
     model.fit(X_scaled, y)
