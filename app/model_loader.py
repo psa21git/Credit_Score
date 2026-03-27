@@ -11,7 +11,7 @@ def download_models_if_missing():
     os.makedirs("models", exist_ok=True)
     
     files_to_download = {
-        MODEL_PATH: "19LG5gbtMZuvpxtpfhUAHEyOfm6HmA-kz",
+        MODEL_PATH: "1Aa7xo4DeuAPz1c1DENt5xT4qipfgo2ws",
         SCALER_PATH: "141bw4eosyYcq1RsWhRCr7lvbWULVnYQQ", 
         FEATURES_PATH: "1zbnCpRSec281iFvpQqyx9gUngS9y5gco",
         ENCODER_PATH: "1jQLfYJvzj8yEQhS6C2hlT8emwl29XNBz" 
