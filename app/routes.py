@@ -1,13 +1,9 @@
 from flask import Blueprint, request, jsonify, render_template
 import pandas as pd
-from app.model_loader import model, scaler
-import pickle
+from app.model_loader import get_model, get_scaler
 from src.preprocess import preprocess_input
 
 predict_bp = Blueprint("predict", __name__,template_folder="../template",static_url_path="../static")
-
-# load feature order ONCE
-FEATURES = pickle.load(open("models/features.pkl", "rb"))
 
 # ✅ HOME PAGE (GET)
 @predict_bp.route("/", methods=["GET"])
@@ -17,10 +13,13 @@ def home():
 # ✅ PREDICTION API (POST)
 @predict_bp.route("/predict", methods=["POST"])
 def predict():
+    # Retrieve model and scaler
+    model = get_model()
+    scaler = get_scaler()
+
     data = request.json
     df = pd.DataFrame([data])
 
-    # 🔥 single source of truth
     df = preprocess_input(df, mode="predict")
 
     # Scale
@@ -34,3 +33,4 @@ def predict():
         "credit_status": "Good" if pred == 1 else "Bad",
         "default_probability": round(float(prob), 3)
     })
+
